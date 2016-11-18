@@ -13,6 +13,6 @@ export default class EventCallbackWebpackPlugin {
     }
 
     apply(compiler) {
-        compiler.plugin(this.event, (...args) => this.callback(args));
+        compiler.plugin(this.event, (...args) => this.callback(...args));
     }
 }

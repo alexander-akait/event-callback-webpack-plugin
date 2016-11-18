@@ -1,6 +1,6 @@
 {
     "name": "event-callback-webpack-plugin",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Webpack plugin that gives ability to add callback after webpack event",
     "keywords": [
         "webpack",
