@@ -1,4 +1,4 @@
-# Head
+# 1.1.0
 
 - Added: support multiple events.
 - Chore: minimum required `nyc` version is now `^10.0.0`.
