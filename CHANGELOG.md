@@ -1,5 +1,6 @@
 # Head
 
+- Added: support multiple events.
 - Chore: minimum required `nyc` version is now `^10.0.0`.
 - Chore: minimum required `eslint-plugin-itgalaxy` version is now `^30.0.0`.
 

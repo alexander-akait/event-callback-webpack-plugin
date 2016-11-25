@@ -4,6 +4,8 @@
 [![Travis Build Status](https://img.shields.io/travis/itgalaxy/event-callback-webpack-plugin/master.svg?label=build)](https://travis-ci.org/itgalaxy/event-callback-webpack-plugin) 
 [![devDependencies Status](https://david-dm.org/itgalaxy/event-callback-webpack-plugin/dev-status.svg)](https://david-dm.org/itgalaxy/event-callback-webpack-plugin?type=dev)
 
+Add callbacks to webpack events.
+
 ## Install
 
 ```shell
@@ -13,15 +15,15 @@ npm install --save-dev event-callback-webpack-plugin
 ## Usage
 
 ```js
-const EventCallbackWebpackPlugin = require('event-callback-webpack-plugin').default;
+import EventCallbackWebpackPlugin from 'event-callback-webpack-plugin';
 
-module.exports = {
+export default {
   plugins: [
     new EventCallbackWebpackPlugin('done', () => {
-        console.log('Hello World!');
+        console.log('Hello `done`!');
     })
   ]
-}
+};
 ```
 
 Or
@@ -31,8 +33,17 @@ import EventCallbackWebpackPlugin from 'event-callback-webpack-plugin';
 
 export default {
   plugins: [
-    new EventCallbackWebpackPlugin('done', () => {
-        console.log('Hello World!');
+    new EventCallbackWebpackPlugin({
+        emit: (compilation, callback) => {
+            console.log('Hello `emit`!');
+            
+            return callback();
+        },
+        'after-emit': (compilation, callback) => {
+            console.log('Hello `after-emit`!');
+            
+            return callback();
+        }
     })
   ]
 };
@@ -40,8 +51,8 @@ export default {
 
 ## Options
 
-- `event` - (require) webpack event.
-- `callback` - (require) callback function.
+- `events` - (require) `string` or `object` webpack events.
+- `callback` - (optional) callback function.
 
 ## Contribution
 
