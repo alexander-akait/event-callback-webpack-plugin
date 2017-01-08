@@ -14,7 +14,7 @@ export default class EventCallbackWebpackPlugin {
             }
 
             this.events = {};
-            this.events[events] = args[0];
+            this.events[events] = args[0]; // eslint-disable-line prefer-destructuring
         } else {
             if (args.length > 0) {
                 throw new Error('Don\'t pass second argument if first argument is `object`');
