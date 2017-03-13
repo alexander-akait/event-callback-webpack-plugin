@@ -51,8 +51,8 @@ export default {
 
 ## Options
 
-- `events` - (require) `string` or `object` webpack events.
-- `callback` - (optional) callback function.
+-   `events` - (require) `string` or `object` webpack events.
+-   `callback` - (optional) callback function.
 
 ## Contribution
 
