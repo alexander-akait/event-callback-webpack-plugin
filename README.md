@@ -1,10 +1,9 @@
 # event-callback-webpack-plugin
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/itgalaxy/event-callback-webpack-plugin.svg)](https://greenkeeper.io/)
-
 [![NPM version](https://img.shields.io/npm/v/event-callback-webpack-plugin.svg)](https://www.npmjs.org/package/event-callback-webpack-plugin) 
 [![Travis Build Status](https://img.shields.io/travis/itgalaxy/event-callback-webpack-plugin/master.svg?label=build)](https://travis-ci.org/itgalaxy/event-callback-webpack-plugin) 
 [![devDependencies Status](https://david-dm.org/itgalaxy/event-callback-webpack-plugin/dev-status.svg)](https://david-dm.org/itgalaxy/event-callback-webpack-plugin?type=dev)
+[![Greenkeeper badge](https://badges.greenkeeper.io/itgalaxy/event-callback-webpack-plugin.svg)](https://greenkeeper.io/)
 
 Add callbacks to webpack events.
 
