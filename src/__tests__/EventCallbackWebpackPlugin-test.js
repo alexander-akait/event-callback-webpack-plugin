@@ -1,17 +1,17 @@
-import EventCallbackWebpackPlugin from '../EventCallbackWebpackPlugin';
+import EventCallbackWebpackPlugin from "../EventCallbackWebpackPlugin";
 // eslint-disable-next-line node/no-unpublished-import
-import test from 'ava';
+import test from "ava";
 // eslint-disable-next-line node/no-unpublished-import
-import webpack from 'webpack';
-import webpackConfigBase from './config/config-base';
+import webpack from "webpack";
+import webpackConfigBase from "./config/config-base";
 
 test.cb(
-    'should execute successfully if `events` first argument and `callback` second argument',
+    "should execute successfully if `events` first argument and `callback` second argument",
     t => {
         t.plan(2);
 
         webpackConfigBase.plugins = [
-            new EventCallbackWebpackPlugin('done', stats => {
+            new EventCallbackWebpackPlugin("done", stats => {
                 t.true(stats.compilation.errors.length === 0);
             })
         ];
@@ -31,21 +31,21 @@ test.cb(
 );
 
 test.cb(
-    'should execute successfully if `events` first argument with multiple events',
+    "should execute successfully if `events` first argument with multiple events",
     t => {
         t.plan(5);
 
         webpackConfigBase.plugins = [
             new EventCallbackWebpackPlugin({
-                'after-emit': (compilation, callback) => {
+                "after-emit": (compilation, callback) => {
                     t.true(compilation.errors.length === 0);
-                    t.true(typeof callback === 'function');
+                    t.true(typeof callback === "function");
 
                     return callback();
                 },
                 emit: (compilation, callback) => {
                     t.true(compilation.errors.length === 0);
-                    t.true(typeof callback === 'function');
+                    t.true(typeof callback === "function");
 
                     return callback();
                 }
@@ -66,13 +66,13 @@ test.cb(
     }
 );
 
-test.cb('should accept all argument from `webpack` event', t => {
+test.cb("should accept all argument from `webpack` event", t => {
     t.plan(3);
 
     webpackConfigBase.plugins = [
-        new EventCallbackWebpackPlugin('emit', (compilation, callback) => {
+        new EventCallbackWebpackPlugin("emit", (compilation, callback) => {
             t.true(compilation.errors.length === 0);
-            t.true(typeof callback === 'function');
+            t.true(typeof callback === "function");
 
             return callback();
         })
@@ -91,24 +91,24 @@ test.cb('should accept all argument from `webpack` event', t => {
     });
 });
 
-test('should execute failed when not filled options', t => {
+test("should execute failed when not filled options", t => {
     t.throws(
         () => new EventCallbackWebpackPlugin(),
-        'Option `events` should not be empty'
+        "Option `events` should not be empty"
     );
 });
 
-test('should execute failed when `events` is empty `object`', t => {
+test("should execute failed when `events` is empty `object`", t => {
     t.throws(
         () => new EventCallbackWebpackPlugin({}),
-        'Option `events` should not be empty'
+        "Option `events` should not be empty"
     );
 });
 
-test('should execute failed when `events` is not empty `object` and `callback` is not a function', t => {
+test("should execute failed when `events` is not empty `object` and `callback` is not a function", t => {
     webpackConfigBase.plugins = [
         new EventCallbackWebpackPlugin({
-            done: 'test'
+            done: "test"
         })
     ];
 
@@ -117,11 +117,11 @@ test('should execute failed when `events` is not empty `object` and `callback` i
     t.throws(
         // eslint-disable-next-line no-empty-function
         () => webpack(webpackOptions, () => {}),
-        'Option `callback` should be a function'
+        "Option `callback` should be a function"
     );
 });
 
-test('should execute failed when `events` is not empty `object` and filed `callback`', t => {
+test("should execute failed when `events` is not empty `object` and filed `callback`", t => {
     t.throws(
         () =>
             new EventCallbackWebpackPlugin(
@@ -134,16 +134,16 @@ test('should execute failed when `events` is not empty `object` and filed `callb
     );
 });
 
-test('should execute failed when `events` is array', t => {
+test("should execute failed when `events` is array", t => {
     t.throws(
         () => new EventCallbackWebpackPlugin([]),
-        'Option `events` should be `object` or `string`'
+        "Option `events` should be `object` or `string`"
     );
 });
 
-test('should execute failed when `events` is string and `callback` not filled', t => {
+test("should execute failed when `events` is string and `callback` not filled", t => {
     t.throws(
-        () => new EventCallbackWebpackPlugin('done'),
-        'Require `callback` argument'
+        () => new EventCallbackWebpackPlugin("done"),
+        "Require `callback` argument"
     );
 });
